@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>페이드 배너</title>
+  <style>
+  * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+  body, html {padding:0; margin:0}
+    .banner-container {
+      position: relative;
+      width: 1440px;
+      height: 2560px;
+      margin: 40px auto;
+      overflow: hidden;
+    }
+
+    .banner-container img {
+      position: absolute;
+      width: 100%;
+      _height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .banner-container img.active {
+      opacity: 1;
+      z-index: 1;
+    }
+	 @media (max-width: 1440px) {
+      .banner-container{width:100%;}
+
+    }
+
+   
+  </style>
+</head>
+<body>
+
+  <div class="banner-container">
+    <img src="IMG_9343.jpg" class="active" />
+    <img src="IMG_10062.jpg" />
+    <img src="IMG_10009.jpg" />
+    <img src="IMG_10239.jpg" />
+	<img src="IMG_11134.jpg" />
+  </div>
+
+  <script>
+    const images = document.querySelectorAll('.banner-container img');
+    let current = 0;
+
+    setInterval(() => {
+      images[current].classList.remove('active');
+      current = (current + 1) % images.length;
+      images[current].classList.add('active');
+    }, 3000); // 3초 간격으로 전환
+  </script>
+
+</body>
+</html>
