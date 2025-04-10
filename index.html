@@ -48,7 +48,9 @@
     <img src="IMG_10239.jpg" />
 	<img src="IMG_11134.jpg" />
   </div>
+ <audio id="bgm" src="bensound-newfrontier.mp3" loop autoplay muted playsinline></audio>
 
+  <button onclick="toggleMusic()" id="musicBtn">음악 정지</button>
   <script>
     const images = document.querySelectorAll('.banner-container img');
     let current = 0;
@@ -58,7 +60,26 @@
       current = (current + 1) % images.length;
       images[current].classList.add('active');
     }, 8000); // 8초 간격으로 전환
+
+    const bgm = document.getElementById('bgm');
+    const musicBtn = document.getElementById('musicBtn');
+
+    function toggleMusic() {
+      if (bgm.paused) {
+        bgm.muted = false;
+        bgm.play();
+        musicBtn.textContent = '음악 정지';
+      } else {
+        bgm.pause();
+        musicBtn.textContent = '음악 재생';
+      }
+    }
+
+    // 사용자 첫 클릭 시 소리 켜기
+    document.body.addEventListener('click', () => {
+      if (bgm.muted) {
   </script>
 
 </body>
 </html>
+bensound-newfrontier.mp3
