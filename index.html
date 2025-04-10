@@ -76,8 +76,13 @@
     }
 
     // 사용자 첫 클릭 시 소리 켜기
-    document.body.addEventListener('click', () => {
+   document.body.addEventListener('click', () => {
       if (bgm.muted) {
+        bgm.muted = false;
+        bgm.play();
+        musicBtn.textContent = '음악 정지';
+      }
+    }, { once: true });
   </script>
 
 </body>
